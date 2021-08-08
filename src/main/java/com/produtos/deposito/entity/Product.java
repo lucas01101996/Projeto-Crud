@@ -34,7 +34,6 @@ public class Product  implements Serializable {
     public Product( String name, double price, CategoriaProduct categoria, StatusProduct status) {
         this.name = name;
         this.price = price;
-        this.cod = cod;
         this.categoria = categoria;
         this.status = status;
     }

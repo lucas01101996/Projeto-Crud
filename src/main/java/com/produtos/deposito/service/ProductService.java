@@ -12,10 +12,10 @@ public class ProductService {//regra de negocio
     @Autowired
     ProductRepository productRepository;
 
-   public List<Product> listAll(String keyword) {
-       if (keyword != null) {
-           return productRepository.findAll(keyword);
-       }
-       return productRepository.findAll();
-   }
+   //public List<Product> listAll(String keyword) {
+       //if (keyword != null) {
+           //return productRepository.findAll(keyword);
+       //}
+       //return productRepository.findAll();
+   //}
 }

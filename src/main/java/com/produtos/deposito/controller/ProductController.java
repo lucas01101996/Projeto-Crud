@@ -16,7 +16,7 @@ public class ProductController {
     @Autowired
     ProductRepository productRepository;
 
-    @Autowired
+    @Autowired  //Esse que deveria ser chamado não o repository diretamente
     ProductService productService;
 
     @RequestMapping(value = "/product", method =  RequestMethod.GET)//buscar todos
@@ -24,13 +24,13 @@ public class ProductController {
         return productRepository.findAll();
     }
 
-    @GetMapping("/product/{id}")
-    Optional<Product> listaProdutoUnico(@PathVariable Long id){
+    @GetMapping("/produto/{id}")
+    public Optional<Product> listaProdutoUnico(@PathVariable Long id){
         return productRepository.findById(id);
     }
 
-    @GetMapping("/produto/{name}")
-    List<Product> listaProduto(@PathVariable String name){
+    @GetMapping(value = "/search/{name}") // isso tem que retornar um produto nao uma lista
+    public Optional<Product> listaProduto(@PathVariable String name){
         return productRepository.findByName(name);
     }
 
@@ -41,8 +41,6 @@ public class ProductController {
         List<Product> listProduct = productService.listAll(keyword);
         return productRepository.findByName(name);
     }*/
-
-
 
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)//salvar
@@ -57,7 +55,7 @@ public class ProductController {
 
     @RequestMapping(value = "/delete/{id}", method =  RequestMethod.DELETE)//deletar um produto pelo id
     public void findById(@PathVariable Long id){
-        productRepository.deleteById(id); //
+        productRepository.deleteById(id);
 
     }
 
